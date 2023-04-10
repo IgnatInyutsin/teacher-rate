@@ -6,6 +6,8 @@ import {Routes, RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
 import { HttpClientModule }   from '@angular/common/http';
 import {CookieService} from "ngx-cookie-service";
+import { HeaderComponent } from './header/header.component';
+import { SearchBoxComponent } from './search-box/search-box.component';
 
 // определение маршрутов
 const appRoutes: Routes = [];
@@ -14,6 +16,8 @@ const appRoutes: Routes = [];
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
+    SearchBoxComponent,
   ],
   imports: [
     BrowserModule,
