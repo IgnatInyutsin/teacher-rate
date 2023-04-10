@@ -1,4 +1,4 @@
-# Weather app
+# Teacher Rate
 
 
 
@@ -8,7 +8,7 @@
 с помощью команды cd
 - Перейдите в директорию
 ```
-cd docker/weather-app_instances/
+cd docker/teacher-rate_instances/
 ```
 - Создайте файл .env
 ```
@@ -31,19 +31,19 @@ chmod +x start
 ```
 ## Управлениe приложением
 ### Запуск приложения
-В папке docker/weather-app_instances/ запустите
+В папке docker/teacher-rate_instances/ запустите
 ```
 ./start
 ```
 
 ### Остановка приложения
-В папке docker/weather-app_instances/ запустите
+В папке docker/teacher-rate_instances/ запустите
 ```
 ./stop
 ```
 
 ### Просмотреть логи бэкэнда
-В папке docker/weather-app_instances/ запустите
+В папке docker/teacher-rate_instances/ запустите
 ```
 ./django_logs
 ```
