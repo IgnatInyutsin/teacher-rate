@@ -11,5 +11,6 @@ urlpatterns += [
     path('api/auth/api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/auth/', include('djoser.urls')),
     path('api/auth/', include('djoser.urls.authtoken')),
-    path('api/auth/', include('djoser.urls.jwt'))
+    path('api/auth/', include('djoser.urls.jwt')),
+    path('api/', include('restapi.app.routes'))
 ]

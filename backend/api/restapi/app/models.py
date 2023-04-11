@@ -35,7 +35,7 @@ class Review(models.Model):
     main_text = models.TextField("Основной текст")
     grade = models.PositiveSmallIntegerField("Оценка", validators=[MaxValueValidator(5)])
     teacher = models.ForeignKey(
-        User,
+        Teacher,
         models.CASCADE,
         related_name="reviews_teacher",
         verbose_name="Учитель"

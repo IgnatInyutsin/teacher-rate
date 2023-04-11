@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09ead620-5522-4001-b4cc-9060c7c539f1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/api/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/restapi/app/routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/restapi/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/restapi/app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/restapi/app/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/restapi/app/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/restapi/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/restapi/app/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/restapi/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/restapi/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +56,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/restapi/app" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -64,7 +75,7 @@
       <workItem from="1666267124013" duration="617000" />
       <workItem from="1666792195038" duration="21000" />
       <workItem from="1681136267383" duration="1132000" />
-      <workItem from="1681195777491" duration="5853000" />
+      <workItem from="1681195777491" duration="9943000" />
     </task>
     <servers />
   </component>
