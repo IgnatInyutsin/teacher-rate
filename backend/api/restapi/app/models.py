@@ -37,7 +37,7 @@ class Review(models.Model):
     teacher = models.ForeignKey(
         User,
         models.CASCADE,
-        related_name="reviews",
+        related_name="reviews_teacher",
         verbose_name="Учитель"
     )
 
