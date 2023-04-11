@@ -8,9 +8,7 @@
     <nav>
       <button *ngIf="!login" (click)="login = !login" class="mx-2 py-2 px-4 bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold rounded-lg items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400" data-modal-target="registration-modal" data-modal-toggle="registration-modal">SignUp</button>
       <button *ngIf="login" (click)="login = !login" class="mx-2 py-2 px-4 bg-red-900 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-red-50 text-white font-semibold rounded-lg items-center justify-center sm:w-auto dark:bg-rose-500 dark:highlight-white/20 dark:hover:bg-rose-400">Sign Out</button>
-
       <button *ngIf="!login" class="mx-2 invis" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal">Sign In</button>
-
     </nav>
   </div>
 
