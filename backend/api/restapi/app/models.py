@@ -40,3 +40,10 @@ class Review(models.Model):
         related_name="reviews",
         verbose_name="Учитель"
     )
+
+    def __str__(self):
+        return f"<Review for {self.teacher} from {self.author}>"
+    
+    class Meta:
+        verbose_name = "Отзыв"
+        verbose_name_plural = "Отзывы"
