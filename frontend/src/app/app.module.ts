@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 import { HttpClientModule }   from '@angular/common/http';
 import {CookieService} from "ngx-cookie-service";
 import { TeacherComponent } from './teacher/teacher.component';
+import { TeacherListComponent } from './teacher-list/teacher-list.component';
 
 // определение маршрутов
 const appRoutes: Routes = [
-  {path: "teachers/:Id", component: TeacherComponent}
+  {path: "teachers/:Id", component: TeacherComponent},
+  {path: "teachers", component: TeacherListComponent}
 ];
 
 
@@ -18,6 +20,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     TeacherComponent,
+    TeacherListComponent,
   ],
   imports: [
     BrowserModule,
