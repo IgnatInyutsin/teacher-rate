@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Teacher, Review
+from restapi.app.models import Teacher, Review
 
 
 @admin.register(Teacher)
