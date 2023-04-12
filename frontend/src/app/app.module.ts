@@ -14,6 +14,7 @@ import { MainComponent } from './main/main.component';
 
 // определение маршрутов
 const appRoutes: Routes = [
+  {path: "", component: MainComponent},
   {path: "teachers/:Id", component: TeacherComponent},
   {path: "teachers", component: TeacherListComponent}
 ];
