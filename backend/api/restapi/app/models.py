@@ -29,7 +29,7 @@ class Review(models.Model):
     author = models.ForeignKey(
         User,
         models.CASCADE,
-        related_name="reviews",
+        related_name="reviews_owner",
         verbose_name="Рецензент"
     )
     title = models.CharField("Заголовок", max_length=200)
@@ -38,7 +38,7 @@ class Review(models.Model):
     teacher = models.ForeignKey(
         Teacher,
         models.CASCADE,
-        related_name="reviews_teacher",
+        related_name="reviews",
         verbose_name="Учитель"
     )
 
