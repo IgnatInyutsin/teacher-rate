@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders } from "@angular/common/http";
 import {Connector} from "../restapi";
 import { CookieService } from 'ngx-cookie-service';
 
@@ -45,6 +45,25 @@ export class HeaderComponent implements OnInit {
   constructor(private http: HttpClient, private connector: Connector, public cookieService: CookieService) { }
 
   ngOnInit(): void {
+    // проверка авторизации
+    if (this.cookieService.get("token") == '') {
+      this.login = false;
+    }
+    else {
+      // проверка на существование токена
+      this.http.get(this.connector.url + "api/auth/users/me/", {
+        headers: new HttpHeaders({
+          "Authorization": "Token " + this.cookieService.get("token")
+        })
+      }).subscribe(() => {}, () => {
+        //если не существует - разлогиниваемся
+        this.cookieService.delete("token");
+        location.reload();
+      });
+      this.login = true;
+    }
+
+    // проверка темной темы
     if (this.cookieService.get("theme") == "false") {
       document.documentElement.classList.remove(this.darkTheme);
     }
@@ -88,6 +107,11 @@ export class HeaderComponent implements OnInit {
       if (error.error.username != undefined) this.signUp.errors.placedNickname = true;
       if (error.error.password != undefined) this.signUp.errors.shortPassword = true;
     })
+  }
+
+  signOut(): void {
+    this.cookieService.delete("token", "/");
+    location.reload();
   }
 
   switched_theme():void{

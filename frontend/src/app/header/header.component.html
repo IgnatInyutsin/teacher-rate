@@ -7,7 +7,7 @@
     </div>
     <nav>
       <button *ngIf="!login" class="mx-2 py-2 px-4 bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold rounded-lg items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400" data-modal-target="registration-modal" data-modal-toggle="registration-modal">SignUp</button>
-      <button *ngIf="login" class="mx-2 py-2 px-4 bg-red-900 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-red-50 text-white font-semibold rounded-lg items-center justify-center sm:w-auto dark:bg-rose-500 dark:highlight-white/20 dark:hover:bg-rose-400">Sign Out</button>
+      <button (click)="signOut()" *ngIf="login" class="mx-2 py-2 px-4 bg-red-900 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-red-50 text-white font-semibold rounded-lg items-center justify-center sm:w-auto dark:bg-rose-500 dark:highlight-white/20 dark:hover:bg-rose-400">Sign Out</button>
 
       <button *ngIf="!login" class="mx-2 invis" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal">Sign In</button>
       <button (click)="switched_theme()" id="theme-toggle" data-tooltip-target="tooltip-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
