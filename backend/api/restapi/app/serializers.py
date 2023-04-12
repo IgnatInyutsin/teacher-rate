@@ -16,8 +16,12 @@ class ReviewSerializer(serializers.ModelSerializer):
                        grade_count=teacher[0].grade_count+1)
         return Review.objects.create(**validated_data)
 
-
 class TeacherSerializer(serializers.ModelSerializer):
     class Meta:
         model = Teacher
         fields = ("name", "city", "job_place", "photo", "grade")
+
+class TeacherCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Teacher
+        fields = ("name", "description", "study_place", "jobplace", "city", "photo")
