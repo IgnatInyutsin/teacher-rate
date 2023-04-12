@@ -19,9 +19,9 @@ class ReviewSerializer(serializers.ModelSerializer):
 class TeacherSerializer(serializers.ModelSerializer):
     class Meta:
         model = Teacher
-        fields = ("name", "city", "job_place", "photo", "grade")
+        fields = ("name", "city", "job_place", "photo", "grade_mean")
 
 class TeacherCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Teacher
-        fields = ("name", "description", "study_place", "jobplace", "city", "photo")
+        fields = ("name", "description", "study_place", "job_place", "city", "photo")

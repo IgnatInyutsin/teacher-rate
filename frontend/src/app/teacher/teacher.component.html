@@ -37,28 +37,36 @@
 <section class="bg-white dark:bg-gray-900 py-8 lg:py-16">
   <div class="max-w-2xl mx-auto px-4">
     <div class="flex justify-between items-center mb-6">
-      <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Discussion (20)</h2>
+      <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Оценки</h2>
     </div>
-    <form class="mb-6">
+    <form class="mb-6" *ngIf="!commentary.hidden">
+      <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+        <label for="comment_title" class="sr-only">Your title</label>
+        <input [(ngModel)]="commentary.fields.title" [ngModelOptions]="{standalone: true}"
+        id="comment_title" rows="6"
+                  class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
+                  placeholder="Write the title" required>
+      </div>
       <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
         <label for="comment" class="sr-only">Your comment</label>
-        <textarea id="comment" rows="6"
+        <textarea [(ngModel)]="commentary.fields.main_text" [ngModelOptions]="{standalone: true}"
+          id="comment" rows="6"
                   class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
                   placeholder="Write a comment..." required></textarea>
       </div>
       <div class="rating-area" style="width: auto">
-        <input type="radio" id="star-5" name="rating" value="5">
+        <input type="radio" id="star-5" name="rating" value="5" [(ngModel)]="commentary.fields.grade" [ngModelOptions]="{standalone: true}">
         <label for="star-5" title="Оценка «5»"></label>
-        <input type="radio" id="star-4" name="rating" value="4">
+        <input type="radio" id="star-4" name="rating" value="4" [(ngModel)]="commentary.fields.grade" [ngModelOptions]="{standalone: true}">
         <label for="star-4" title="Оценка «4»"></label>
-        <input type="radio" id="star-3" name="rating" value="3">
+        <input type="radio" id="star-3" name="rating" value="3" [(ngModel)]="commentary.fields.grade" [ngModelOptions]="{standalone: true}">
         <label for="star-3" title="Оценка «3»"></label>
-        <input type="radio" id="star-2" name="rating" value="2">
+        <input type="radio" id="star-2" name="rating" value="2" [(ngModel)]="commentary.fields.grade" [ngModelOptions]="{standalone: true}">
         <label for="star-2" title="Оценка «2»"></label>
-        <input type="radio" id="star-1" name="rating" value="1">
+        <input type="radio" id="star-1" name="rating" value="1" [(ngModel)]="commentary.fields.grade" [ngModelOptions]="{standalone: true}">
         <label for="star-1" title="Оценка «1»"></label>
       </div>
-      <button class="bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold rounded-lg items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400 py-2 px-4">
+      <button (click) = "putReview()" class="bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold rounded-lg items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400 py-2 px-4">
         Post comment
       </button>
     </form>

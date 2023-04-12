@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-teacher-list',
@@ -8,9 +9,12 @@ import {Router} from "@angular/router";
 })
 export class TeacherListComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  name: any = "";
+
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    if (this.route.snapshot.queryParamMap.get("name") != undefined) this.name = this.route.snapshot.queryParamMap.get("name");
   }
 
   redirectToTeacher(Id: number): void {
