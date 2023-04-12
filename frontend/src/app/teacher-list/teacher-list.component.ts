@@ -68,5 +68,11 @@ export class TeacherListComponent implements OnInit {
     }, () => {
         this.addTeacher.error = true;
     })
+
+    // обновляем учителей
+    this.http.get(this.connector.url + "api/teachers/", {params: {"name": this.name}}).subscribe((data) => {
+      this.teachers = data;
+      console.log(data);
+    });
   }
 }
