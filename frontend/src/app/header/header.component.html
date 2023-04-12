@@ -64,7 +64,7 @@
             <input [(ngModel)]="signIn.fields.password" [ngModelOptions]="{standalone: true}"
               type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
           </div>
-          <button (click)="registration()" type="submit" class="w-full font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white rounded-lg items-center justify-center dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400">Войти</button>
+          <button (click)="authorization()" type="submit" class="w-full font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white rounded-lg items-center justify-center dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400">Войти</button>
           <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
             Не зарегистрированы? <button class="mx-2 py-2 px-4 bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold rounded-lg items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400" data-modal-target="registration-modal" data-modal-toggle="registration-modal" data-modal-hide="authentication-modal">Создайте аккаунт.</button>
           </div>
@@ -83,25 +83,73 @@
         <span class="sr-only">Close modal</span>
       </button>
       <div class="px-6 py-6 lg:px-8">
-        <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Вход</h3>
+        <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Создание аккаунта</h3>
+        <div class="relative w-full max-w-md max-h-full" >
+          <div *ngIf="signUp.errors.emptyUsername"
+               id="alert-border-5" class="flex p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800" role="alert">
+            <svg class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            <div class="ml-3 text-sm font-medium">
+              ОШИБКА! Введите имя пользователя
+            </div>
+          </div>
+          <div *ngIf="signUp.errors.incorrectEmail"
+               id="alert-border-6" class="flex p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800" role="alert">
+            <svg class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            <div class="ml-3 text-sm font-medium">
+              ОШИБКА! Введите настоящую почту
+            </div>
+          </div>
+          <div *ngIf="signUp.errors.emptyPassword"
+               id="alert-border-7" class="flex p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800" role="alert">
+            <svg class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            <div class="ml-3 text-sm font-medium">
+              ОШИБКА! Введите пароль
+            </div>
+          </div>
+          <div *ngIf="signUp.errors.notDuplicatePassword"
+               id="alert-border-8" class="flex p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800" role="alert">
+            <svg class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            <div class="ml-3 text-sm font-medium">
+              ОШИБКА! Пароли не совпадают
+            </div>
+          </div>
+          <div *ngIf="signUp.errors.shortPassword"
+               id="alert-border-9" class="flex p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800" role="alert">
+            <svg class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            <div class="ml-3 text-sm font-medium">
+              ОШИБКА! Пароль слишком простой
+            </div>
+          </div>
+          <div *ngIf="signUp.errors.placedNickname"
+               id="alert-border-10" class="flex p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800" role="alert">
+            <svg class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            <div class="ml-3 text-sm font-medium">
+              ОШИБКА! Это имя уже занято
+            </div>
+          </div>
         <form class="space-y-6" action="#">
           <div>
             <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Никнейм</label>
-            <input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="username" required>
+            <input [(ngModel)]="signUp.fields.username" [ngModelOptions]="{standalone: true}"
+              type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="username" required>
           </div>
           <div>
             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-            <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="example@mail.ru" required>
+            <input [(ngModel)]="signUp.fields.email" [ngModelOptions]="{standalone: true}"
+              type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="example@mail.ru" required>
           </div>
           <div>
             <label for="password_first" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Пароль</label>
-            <input type="password_first" name="password" id="password_first" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+            <input [(ngModel)]="signUp.fields.password" [ngModelOptions]="{standalone: true}"
+              type="password" name="password" id="password_first" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
           </div>
           <div>
             <label for="password_second" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Повторите Пароль</label>
-            <input type="password_second" name="password" id="password_second" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+            <input [(ngModel)]="signUp.fields.retypePassword" [ngModelOptions]="{standalone: true}"
+              type="password" name="password" id="password_second" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
           </div>
-          <button type="submit" class="w-full font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white rounded-lg items-center justify-center dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400">Зарегистрироваться</button>
+          <button (click)="registration()"
+            type="submit" class="w-full font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white rounded-lg items-center justify-center dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400">Зарегистрироваться</button>
           <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
             Уже есть аккаунт? <button class="mx-2 py-2 px-4 bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold rounded-lg items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" data-modal-hide="registration-modal">Войти</button>
           </div>
