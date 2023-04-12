@@ -10,6 +10,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { TeacherComponent } from './teacher/teacher.component';
 import { TeacherListComponent } from './teacher-list/teacher-list.component';
 import {Connector} from "./restapi";
+import { MainComponent } from './main/main.component';
 
 // определение маршрутов
 const appRoutes: Routes = [
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
     SearchBoxComponent,
     TeacherComponent,
     TeacherListComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
