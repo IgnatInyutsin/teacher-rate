@@ -13,10 +13,7 @@ class ReviewViewSet(mixins.CreateModelMixin,
         serializer.save(author=self.request.user)
 
 
-class TeacherViewSet(viewsets.ModelViewSet):
+class TeacherViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Teacher.objects.all()
     serializer_class = TeacherSerializer
     permission_classes = tuple()
-
-    def retrieve(self, request, pk):
-        return self.queryset.filter(pk=pk).get()
