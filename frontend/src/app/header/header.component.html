@@ -6,8 +6,8 @@
 
     </div>
     <nav>
-      <button *ngIf="!login" (click)="login = !login" class="mx-2 py-2 px-4 bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold rounded-lg items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400" data-modal-target="registration-modal" data-modal-toggle="registration-modal">SignUp</button>
-      <button *ngIf="login" (click)="login = !login" class="mx-2 py-2 px-4 bg-red-900 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-red-50 text-white font-semibold rounded-lg items-center justify-center sm:w-auto dark:bg-rose-500 dark:highlight-white/20 dark:hover:bg-rose-400">Sign Out</button>
+      <button *ngIf="!login" class="mx-2 py-2 px-4 bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold rounded-lg items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400" data-modal-target="registration-modal" data-modal-toggle="registration-modal">SignUp</button>
+      <button *ngIf="login" class="mx-2 py-2 px-4 bg-red-900 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-red-50 text-white font-semibold rounded-lg items-center justify-center sm:w-auto dark:bg-rose-500 dark:highlight-white/20 dark:hover:bg-rose-400">Sign Out</button>
 
       <button *ngIf="!login" class="mx-2 invis" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal">Sign In</button>
       <button (click)="switched_theme()" id="theme-toggle" data-tooltip-target="tooltip-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
@@ -40,9 +40,9 @@
             <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Пароль</label>
             <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
           </div>
-          <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Войти</button>
+          <button type="submit" class="w-full font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white rounded-lg items-center justify-center dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400">Войти</button>
           <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-            Не зарегистрированы? <button *ngIf="!login" (click)="login = !login" class="mx-2 py-2 px-4 bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold rounded-lg items-center justify-center sm:w-auto dark:bg-blue-700 dark:highlight-white/20 dark:hover:bg-sky-400">Создайте аккаунт.</button>
+            Не зарегистрированы? <button class="mx-2 py-2 px-4 bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold rounded-lg items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400" data-modal-target="registration-modal" data-modal-toggle="registration-modal" data-modal-hide="authentication-modal">Создайте аккаунт.</button>
           </div>
         </form>
       </div>
@@ -78,9 +78,9 @@
             <label for="password_second" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Повторите Пароль</label>
             <input type="password_second" name="password" id="password_second" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
           </div>
-          <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Зарегистрироваться</button>
+          <button type="submit" class="w-full font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white rounded-lg items-center justify-center dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400">Зарегистрироваться</button>
           <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-            Уже есть аккаунт? <button *ngIf="!login" (click)="login = !login" class="mx-2 py-2 px-4 bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold rounded-lg items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" data-modal-hide="registration-modal">Войти</button>
+            Уже есть аккаунт? <button class="mx-2 py-2 px-4 bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold rounded-lg items-center justify-center sm:w-auto dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" data-modal-hide="registration-modal">Войти</button>
           </div>
         </form>
       </div>
