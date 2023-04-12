@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { TeacherComponent } from './teacher/teacher.component';
 import { TeacherListComponent } from './teacher-list/teacher-list.component';
+import {Connector} from "./restapi";
 
 // определение маршрутов
 const appRoutes: Routes = [
