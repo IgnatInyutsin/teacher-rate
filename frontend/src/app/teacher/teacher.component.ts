@@ -67,6 +67,12 @@ export class TeacherComponent {
       this.commentary.fields.title = "";
       this.commentary.fields.grade = "";
       this.commentary.fields.main_text = "";
+
+      this.http.get(this.connector.url + "api/teachers/" + this.id + "/").subscribe((data) => {
+        this.teacher = data;
+        console.log(data);
+      });
+
     });
   }
 }
