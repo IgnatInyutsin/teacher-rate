@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from "@angular/forms";
 import {Routes, RouterModule} from '@angular/router';
-
+import {Connector} from "./restapi";
 import { AppComponent } from './app.component';
 import { HttpClientModule }   from '@angular/common/http';
 import {CookieService} from "ngx-cookie-service";
