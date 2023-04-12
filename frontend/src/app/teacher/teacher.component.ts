@@ -21,6 +21,24 @@ export class TeacherComponent {
     hidden: true
   }
 
+  teacher: any = {
+    name: "",
+    description: "",
+    study_place: "",
+    job_place: "",
+    city: "",
+    photo: "",
+    grade_mean: "",
+    reviews: [{
+      author: {
+        username: ""
+      },
+      title: "",
+      main_text: "",
+      grade: ""
+    }]
+  }
+
   constructor(private route: ActivatedRoute, public cookieService: CookieService, private http: HttpClient, private connector: Connector,) {
   }
 
@@ -31,6 +49,11 @@ export class TeacherComponent {
     if (this.cookieService.get("token") != "") {
       this.commentary.hidden = false;
     }
+
+    this.http.get(this.connector.url + "api/teachers/" + this.id + "/").subscribe((data) => {
+      this.teacher = data;
+      console.log(data);
+    });
   }
 
   putReview(): void {
@@ -42,7 +65,7 @@ export class TeacherComponent {
     }, {headers: new HttpHeaders({"Authorization": "Token " + this.cookieService.get("token")})}).subscribe((data) => {
       console.log(data);
       this.commentary.fields.title = "";
-      this.commentary.fields.grade = "0";
+      this.commentary.fields.grade = "";
       this.commentary.fields.main_text = "";
     });
   }

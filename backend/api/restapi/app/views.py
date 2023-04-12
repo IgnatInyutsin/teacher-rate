@@ -19,6 +19,7 @@ class TeacherViewSet(mixins.CreateModelMixin,
                      mixins.RetrieveModelMixin,
                      viewsets.GenericViewSet):
     queryset = Teacher.objects.all()
+    pagination_class = None
 
     def get_queryset(self):
         name = self.request.query_params.get("name", "")

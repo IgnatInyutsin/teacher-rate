@@ -1,6 +1,6 @@
 <!-- Modal toggle -->
 <div style="width: 100%;">
-<button style="margin: 0 auto; margin-top: 30px" data-modal-target="add-teacher-modal" data-modal-toggle="add-teacher-modal" class="block px-5 py-2.5 text-center bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold rounded-lg dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400" type="button">
+<button *ngIf="login" style="margin: 0 auto; margin-top: 30px" data-modal-target="add-teacher-modal" data-modal-toggle="add-teacher-modal" class="block px-5 py-2.5 text-center bg-slate-900 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold rounded-lg dark:bg-sky-500 dark:highlight-white/20 dark:hover:bg-sky-400" type="button">
   Добавить учителя
 </button>
 </div>
@@ -10,38 +10,57 @@
   <div class="relative w-full max-w-md max-h-full">
     <!-- Modal content -->
     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-      <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="add-teacher-modal">
-        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-        <span class="sr-only">Close modal</span>
-      </button>
       <div class="px-6 py-6 lg:px-8">
         <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Добавьте своего учителя</h3>
+        <div class="relative w-full max-w-md max-h-full" >
+          <div *ngIf="addTeacher.success"
+            id="alert-border-3" class="flex p-4 mb-4 text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-gray-800 dark:border-green-800" role="alert">
+            <svg class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            <div class="ml-3 text-sm font-medium">
+              Учитель успешно создан!
+            </div>
+          </div>
+          <div *ngIf="addTeacher.error"
+               id="alert-border-6" class="flex p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800" role="alert">
+            <svg class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            <div class="ml-3 text-sm font-medium">
+              Неверные введенные данные
+            </div>
+          </div>
+        </div>
         <form class="space-y-6" action="#">
           <div>
             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Имя</label>
-            <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Александр Александров" required>
+            <input [(ngModel)]="addTeacher.fields.name" [ngModelOptions]="{standalone: true}"
+                   type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Александр Александров" required>
           </div>
           <div>
             <label for="jobOfWork" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Кем и где работает</label>
-            <input type="text" name="jobOfWork" id="jobOfWork" placeholder="Учитель информатики в СРЦОД" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+            <input [(ngModel)]="addTeacher.fields.job_place" [ngModelOptions]="{standalone: true}"
+              type="text" name="jobOfWork" id="jobOfWork" placeholder="Учитель информатики в СРЦОД" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
           </div>
           <div>
             <label for="city" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Город работы</label>
-            <input type="text" name="city" id="city" placeholder="Самара" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+            <input [(ngModel)]="addTeacher.fields.city" [ngModelOptions]="{standalone: true}"
+              type="text" name="city" id="city" placeholder="Самара" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
           </div>
           <div>
             <label for="jobOfStudy" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Где обучался</label>
-            <input type="text" name="jobOfStudy" id="jobOfStudy" placeholder="ИТМО" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+            <input [(ngModel)]="addTeacher.fields.study_place" [ngModelOptions]="{standalone: true}"
+              type="text" name="jobOfStudy" id="jobOfStudy" placeholder="ИТМО" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
           </div>
           <div>
             <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Описание</label>
-            <input type="text" name="description" id="description" placeholder="Сильный педагог, способный подтянуть вас до уровня 100 баллов на ЕГЭ и ......" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+            <input [(ngModel)]="addTeacher.fields.description" [ngModelOptions]="{standalone: true}"
+                   type="text" name="description" id="description" placeholder="Сильный педагог, способный подтянуть вас до уровня 100 баллов на ЕГЭ и ......" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
           </div>
           <div>
             <label for="url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Фото (ссылка)</label>
-            <input type="text" name="url" id="url" placeholder="https://github.com/IgnatInyutsin/teacher-rate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+            <input [(ngModel)]="addTeacher.fields.photo" [ngModelOptions]="{standalone: true}"
+                   type="text" name="url" id="url" placeholder="https://github.com/IgnatInyutsin/teacher-rate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
           </div>
-          <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Добавить</button>
+          <button (click)="addNewTeacher()"
+            type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Добавить</button>
         </form>
       </div>
     </div>
@@ -53,13 +72,14 @@
   <div
     class="grid grid-flow-row gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       <!-- Card Item -->
+    <div *ngFor="let teacher of teachers">
       <div class="my-8 rounded shadow-lg shadow-gray-200 dark:shadow-gray-900 bg-white dark:bg-gray-800 duration-300 hover:-translate-y-1">
         <!-- Clickable Area -->
         <div class="cursor-pointer">
           <figure>
             <!-- Image -->
             <img
-              src="https://cdn.profi.ru/xfiles/pfiles/c85bd24713cf4038ac34416d4c16de0a.jpg-a34-90.jpg"
+              [src]="teacher.photo"
               class="rounded-t h-72 w-full object-cover" />
 
             <figcaption class="p-4">
@@ -67,23 +87,23 @@
               <p
                 class="text-lg mb-4 font-bold leading-relaxed text-gray-800 dark:text-gray-300"
                 >
-                Даниил Владимирович Сухаренко
+                {{teacher.name}}
               </p>
 
               <small
                 class="leading-5 text-gray-500 dark:text-gray-400"
                 >
                 <div class="rating-result">
-                  <span class="active"></span>
-                  <span class="active"></span>
-                  <span class="active"></span>
-                  <span></span>
-                  <span></span>
+                  <span [ngClass]="{'active': teacher.grade_mean > 0.5}"></span>
+                  <span [ngClass]="{'active': teacher.grade_mean > 1.5}"></span>
+                  <span [ngClass]="{'active': teacher.grade_mean > 2.5}"></span>
+                  <span [ngClass]="{'active': teacher.grade_mean > 3.5}"></span>
+                  <span [ngClass]="{'active': teacher.grade_meas > 4.5}"></span>
                 </div>
-                <p class="pt-4 text-base font-bold flex items-center justify-start"><svg class="h-4 fill-current text-green-700 pr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9 12H1v6a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6h-8v2H9v-2zm0-1H0V5c0-1.1.9-2 2-2h4V2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1h4a2 2 0 0 1 2 2v6h-9V9H9v2zm3-8V2H8v1h4z"/></svg> Учитель Информатики в СРЦОД</p>
-                <p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-start"><svg class="h-4 fill-current text-green-700 pr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm7.75-8a8.01 8.01 0 0 0 0-4h-3.82a28.81 28.81 0 0 1 0 4h3.82zm-.82 2h-3.22a14.44 14.44 0 0 1-.95 3.51A8.03 8.03 0 0 0 16.93 14zm-8.85-2h3.84a24.61 24.61 0 0 0 0-4H8.08a24.61 24.61 0 0 0 0 4zm.25 2c.41 2.4 1.13 4 1.67 4s1.26-1.6 1.67-4H8.33zm-6.08-2h3.82a28.81 28.81 0 0 1 0-4H2.25a8.01 8.01 0 0 0 0 4zm.82 2a8.03 8.03 0 0 0 4.17 3.51c-.42-.96-.74-2.16-.95-3.51H3.07zm13.86-8a8.03 8.03 0 0 0-4.17-3.51c.42.96.74 2.16.95 3.51h3.22zm-8.6 0h3.34c-.41-2.4-1.13-4-1.67-4S8.74 3.6 8.33 6zM3.07 6h3.22c.2-1.35.53-2.55.95-3.51A8.03 8.03 0 0 0 3.07 6z"/></svg> Самара</p>
+                <p class="pt-4 text-base font-bold flex items-center justify-start"><svg class="h-4 fill-current text-green-700 pr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9 12H1v6a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6h-8v2H9v-2zm0-1H0V5c0-1.1.9-2 2-2h4V2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1h4a2 2 0 0 1 2 2v6h-9V9H9v2zm3-8V2H8v1h4z"/></svg> {{teacher.job_place}}</p>
+                <p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-start"><svg class="h-4 fill-current text-green-700 pr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm7.75-8a8.01 8.01 0 0 0 0-4h-3.82a28.81 28.81 0 0 1 0 4h3.82zm-.82 2h-3.22a14.44 14.44 0 0 1-.95 3.51A8.03 8.03 0 0 0 16.93 14zm-8.85-2h3.84a24.61 24.61 0 0 0 0-4H8.08a24.61 24.61 0 0 0 0 4zm.25 2c.41 2.4 1.13 4 1.67 4s1.26-1.6 1.67-4H8.33zm-6.08-2h3.82a28.81 28.81 0 0 1 0-4H2.25a8.01 8.01 0 0 0 0 4zm.82 2a8.03 8.03 0 0 0 4.17 3.51c-.42-.96-.74-2.16-.95-3.51H3.07zm13.86-8a8.03 8.03 0 0 0-4.17-3.51c.42.96.74 2.16.95 3.51h3.22zm-8.6 0h3.34c-.41-2.4-1.13-4-1.67-4S8.74 3.6 8.33 6zM3.07 6h3.22c.2-1.35.53-2.55.95-3.51A8.03 8.03 0 0 0 3.07 6z"/></svg> {{teacher.city}}</p>
                 <br>
-                <button class="bg-transparent dark:text-gray-300 dark:hover:text-slate-900 hover:bg-slate-700 text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 font-bold rounded-lg items-center justify-center sm:w-auto dark:highlight-white/20 dark:hover:bg-sky-400 dark:border-sky-400 hover:text-white py-2 px-4 border border-slate-700 hover:border-transparent rounded" (click)="redirectToTeacher(1)">
+                <button class="bg-transparent dark:text-gray-300 dark:hover:text-slate-900 hover:bg-slate-700 text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 font-bold rounded-lg items-center justify-center sm:w-auto dark:highlight-white/20 dark:hover:bg-sky-400 dark:border-sky-400 hover:text-white py-2 px-4 border border-slate-700 hover:border-transparent rounded" (click)="redirectToTeacher(teacher.id)">
                   Просмотреть
                 </button>
               </small>
@@ -91,5 +111,6 @@
           </figure>
         </div>
       </div>
-
   </div>
+  </div>
+</div>

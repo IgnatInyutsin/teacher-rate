@@ -20,7 +20,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 class TeacherSerializer(serializers.ModelSerializer):
     class Meta:
         model = Teacher
-        fields = ("name", "city", "job_place", "photo", "grade_mean")
+        fields = ("id", "name", "city", "job_place", "photo", "grade_mean")
 
 
 class FullTeacherSerializer(serializers.ModelSerializer):

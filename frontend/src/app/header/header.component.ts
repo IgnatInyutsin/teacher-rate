@@ -111,6 +111,7 @@ export class HeaderComponent implements OnInit {
 
   signOut(): void {
     this.cookieService.delete("token", "/");
+    this.cookieService.delete("token", "/teachers");
     location.reload();
   }
 
