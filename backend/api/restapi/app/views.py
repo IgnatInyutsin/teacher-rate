@@ -11,3 +11,9 @@ class ReviewViewSet(mixins.CreateModelMixin,
     # добавляем рецезента в сериализатор
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+
+class TeacherViewSet(mixins.CreateModelMixin,
+                     viewsets.GenericViewSet):
+    queryset = Teacher.objects.all()
+    serializer_class = TeacherCreateSerializer
+    permission_classes = (permissions.IsAuthenticated,)

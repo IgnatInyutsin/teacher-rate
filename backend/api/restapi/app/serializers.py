@@ -15,3 +15,8 @@ class ReviewSerializer(serializers.ModelSerializer):
         teacher.update(grade_mean=( teacher[0].grade_mean*teacher[0].grade_count + validated_data.get("grade")) / (teacher[0].grade_count+1),
                        grade_count=teacher[0].grade_count+1)
         return Review.objects.create(**validated_data)
+
+class TeacherCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Teacher
+        fields = ("name", "description", "study_place", "jobplace", "city", "photo")
