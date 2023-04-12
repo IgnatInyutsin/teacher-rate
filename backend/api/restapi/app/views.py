@@ -20,6 +20,10 @@ class TeacherViewSet(mixins.CreateModelMixin,
                      viewsets.GenericViewSet):
     queryset = Teacher.objects.all()
 
+    def get_queryset(self):
+        name = self.request.query_params.get("name", "")
+        return Teacher.objects.filter(name__icontains=name)
+
     def get_serializer_class(self): # Разные методы - разные сериализаторы
         if self.action == "list":
             return TeacherSerializer
