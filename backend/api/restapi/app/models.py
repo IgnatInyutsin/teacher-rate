@@ -12,9 +12,10 @@ class Teacher(models.Model):
     photo = models.URLField("Фото")
     grade_mean = models.FloatField(
         "Средняя оценка",
-        validators=[MaxValueValidator(5), MinValueValidator(0)]
+        validators=[MaxValueValidator(5), MinValueValidator(0)],
+        default=5
     )
-    grade_count = models.PositiveBigIntegerField("Количество оценок")
+    grade_count = models.PositiveBigIntegerField("Количество оценок", default=0)
 
     def __str__(self):
         return f"<Teacher {self.name} in {self.job_place}>"
