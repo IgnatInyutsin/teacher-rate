@@ -15,7 +15,7 @@ class ReviewViewSet(mixins.CreateModelMixin,
 class TeacherViewSet(mixins.CreateModelMixin,
                      mixins.ListModelMixin,
                      mixins.RetrieveModelMixin,
-                     viewsets.GenericViewSe):
+                     viewsets.GenericViewSet):
     queryset = Teacher.objects.all()
     serializer_class = TeacherSerializer
     permission_classes = (permissions.IsAuthenticated,)
