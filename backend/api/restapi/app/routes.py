@@ -4,7 +4,7 @@ from restapi.app.views import ReviewViewSet, TeacherViewSet
 
 router = routers.DefaultRouter()
 router.register('reviews', ReviewViewSet)
-router.register('teacher', TeacherViewSet)
+router.register('teachers', TeacherViewSet)
 
 urlpatterns = [
     path('', include(router.urls))

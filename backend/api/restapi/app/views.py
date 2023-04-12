@@ -13,7 +13,17 @@ class ReviewViewSet(mixins.CreateModelMixin,
         serializer.save(author=self.request.user)
 
 class TeacherViewSet(mixins.CreateModelMixin,
+                     mixins.ListModelMixin,
+                     mixins.RetrieveModelMixin,
                      viewsets.GenericViewSet):
     queryset = Teacher.objects.all()
-    serializer_class = TeacherCreateSerializer
+    serializer_class = TeacherSerializer
     permission_classes = (permissions.IsAuthenticated,)
+    
+    def get_serializer_class(self): # Разные методы - разные сериализаторы
+        if self.action == "list":
+            return TeacherSerializer
+        elif self.action == "retrieve":
+            return TeacherSerializer
+        else:
+            return TeacherCreateSerializer
