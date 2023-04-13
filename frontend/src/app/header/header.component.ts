@@ -94,7 +94,6 @@ export class HeaderComponent implements OnInit {
       password: this.signUp.fields.password,
       email: this.signUp.fields.email
     }).subscribe((data: any) => {
-      console.log(data)
       //сразу авторизируем
       this.http.post(this.connector.url + "api/auth/token/login/", {
         username: this.signUp.fields.username,

@@ -1,6 +1,7 @@
 from rest_framework import viewsets, mixins, permissions
 from restapi.app.serializers import *
 from restapi.app.models import *
+from restapi.app.permissions import IsFirstReview
 
 
 class ReviewViewSet(mixins.CreateModelMixin,
@@ -35,6 +36,6 @@ class TeacherViewSet(mixins.CreateModelMixin,
 
     def get_permissions(self):
         if self.action == "create":
-            self.permission_classes = (permissions.IsAuthenticated,)
+            self.permission_classes = (permissions.IsAuthenticated, IsFirstReview)
         self.permission_classes = (permissions.AllowAny, )
         return super().get_permissions()
